@@ -48,7 +48,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--color-black);
+  color: var(--color-dark-grey);
 }
 
 ul {
@@ -99,7 +99,7 @@ p {
   /* background-color: var(--color-pink); */
   background-color: transparent;
   align-items: center;
-  /* color: var(--color-orange); */
+  color: var(--color-dark-grey);
   padding: 16px;
   position: fixed;
   width: 100%;
@@ -109,6 +109,7 @@ p {
 #navbar.navbar--dark {
   background-color: var(--color-pink);
   padding: 8px;
+  z-index: 1;
 }
 
 .navbar__menu {
