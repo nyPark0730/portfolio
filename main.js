@@ -11,6 +11,8 @@ document.addEventListener('scroll', () => {
     }
 });
 
+
+
 // Navbar 메뉴 클릭시 해당 섹션으로 스크롤 이동
 // console.log(document.querySelectorAll('.navbar__menu__item'));
 // console.log(document.getElementsByClassName('navbar__menu__item'));
@@ -70,6 +72,13 @@ navbarMenu.addEventListener('click', (event) => {
 
 document.querySelector('.home__contact').addEventListener('click', (event) => {
     scrollIntoView('#contact');
+});
+
+// 스크롤 내릴때 home 섹션 투명하게 하기
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+    home.style.opacity = 1-(window.scrollY/homeHeight);
 });
 
 function scrollIntoView(selector) {
