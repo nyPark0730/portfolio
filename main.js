@@ -79,6 +79,22 @@ const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     home.style.opacity = 1-(window.scrollY/homeHeight);
+    arrowButton.style.opacity = (window.scrollY/homeHeight);
+});
+
+// 스크롤 시 위로 가기 버튼 생성
+const arrowUp = document.querySelector('.arrow-up');
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight/2) {
+        arrowUp.classList.add('visible');
+    } else {
+        arrowUp.classList.remove('visible');
+    }
+});
+
+// 위로 가기 버튼
+arrowUp.addEventListener('click', () => {
+    scrollIntoView('#home');
 });
 
 function scrollIntoView(selector) {
