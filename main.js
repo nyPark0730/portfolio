@@ -74,11 +74,19 @@ navbarMenu.addEventListener('click', (event) => {
     });
     */
 
+    navbarMenu.classList.remove('open');
     scrollIntoView(link);
     //const scrollTo = document.querySelector(link);
     //scrollTo.scrollIntoView({behavior : 'smooth'});
 
 });
+
+// Navbar Toggle Button Event
+const navbarToggleButton = document.querySelector('.navbar__toggle-btn');
+navbarToggleButton.addEventListener('click', () => {
+    navbarMenu.classList.toggle('open');
+});
+
 
 document.querySelector('.home__contact').addEventListener('click', (event) => {
     scrollIntoView('#contact');
