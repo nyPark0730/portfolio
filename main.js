@@ -57,12 +57,22 @@ document.querySelector('.home__contact').addEventListener('click', () => {
 */
 
 const navbarMenu = document.querySelector('.navbar__menu');
+//const navbarMenuItems = document.querySelectorAll('.navbar__menu__item');
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
     if (link == null) {
         return ;
     }
+    /*
+    navbarMenuItems.forEach((navbarMenuItem) => {
+        if (link === navbarMenuItem.dataset.link) {
+            navbarMenuItem.classList.add('active');
+        } else {
+            navbarMenuItem.classList.remove('active');
+        }
+    });
+    */
 
     scrollIntoView(link);
     //const scrollTo = document.querySelector(link);
@@ -79,7 +89,6 @@ const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     home.style.opacity = 1-(window.scrollY/homeHeight);
-    arrowButton.style.opacity = (window.scrollY/homeHeight);
 });
 
 // 스크롤 시 위로 가기 버튼 생성
@@ -102,17 +111,25 @@ const workBtnContainer = document.querySelector('.work__categories');
 const proejctContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
 
+
 workBtnContainer.addEventListener('click', (e) => {
     const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
-    
+    // console.log(e.target.classList);
+    // console.log(filter);
     if (filter == null) {
         return;
     }
-    // console.log(filter);
+
+    // 클릭된 카테고리에 active 클래스 추가 및 다른 카테고리에 active 클래스 제거
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+    const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('selected');
+
     proejctContainer.classList.add('anim-out');
     setTimeout(() => {
         projects.forEach((project) => {
-            console.log(project.dataset.type);
+            //console.log(project.dataset.type);
             if (filter === '*' || filter === project.dataset.type) {
                 project.classList.remove('invisible');
             } else {
